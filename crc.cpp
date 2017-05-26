@@ -23,7 +23,7 @@ bool check(uint8_t const *data)
 {
 	bool result = 1;
 	uint8_t size = data[0];
-	uint16_t crc = crc_Fletcher16(data,size);//check the data without excluding the crc
+	uint16_t crc = calculate(data,size);//check the data without excluding the crc
 	if( (data[size] != (crc >> 8) ) || (data[size+1] != (crc & 0xFF) ) )
 	{
 		result = 0;
