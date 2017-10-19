@@ -31,4 +31,12 @@ bool check(uint8_t const *data)
 	return result;
 }
 
+void set(uint8_t *data)
+{
+	uint8_t size = data[0];
+	uint16_t crc = calculate(data,size);//check the data without excluding the crc
+	data[size]   = (crc >> 8);
+	data[size+1] = (crc & 0xFF);
+}
+
 }
